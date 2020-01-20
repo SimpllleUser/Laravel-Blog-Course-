@@ -11,9 +11,10 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', function () {
     return view('welcome');
-});
-Route::get('/Test', function () {
-    return view('Test');
-});
+}); 
+Route::get('/admin','Admin\DashboardController@index');
+Route::resource('/admin/categories','Admin\CategoriesController');
