@@ -1,7 +1,6 @@
 <?php
 
 namespace App;
-
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -20,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email'
     ];
 
     /**
@@ -51,37 +50,50 @@ class User extends Authenticatable
     public static function add ($fields){
         $user = new static;
         $user->fill($fields);
-        $user->password = bcrypt($fields['password']);
         $user->save();
 
-        return $user();
+        return $user;
+    }
+
+    public function generatePassword($password){
+        if ($password != null) {
+            $this->password = bcrypt($password);
+            $this->save();
+        }
     }
 
     public function edit($fields){
         $this->fill($fields);
-        $this->password = bcrypt($fields['password']);
         $this->save();
     }
 
     public function remove(){
+        $this->removeAvatar();
         $this->delete();
-    } 
+    }
 
     public  function uploadAvatar($image){
         //  str_random(10)
         if($image == null){return;}
-        Storage::delete('uploads/' . $this->image);
+        $this->removeAvatar();
         $filename = Str::random(10) . '.' . $image ->extension();
-        $this->image = $filename;
+        $image->storeAs('uploads', $filename);
+        $this->avatar  = $filename;
         $this->save();
      }
 
+     public  function removeAvatar(){
+        if ($this->avatar != null){
+            Storage::delete('uploads/' . $this->avatar);
+        }
+     }
+
      public function getImage(){
-        if($this->image == null){
-            return '/img/no-user-image.png';
+        if($this->avatar == null){
+            return '/img/no-image.png';
         }
 
-        return '/uploads/' . $this->image;
+        return '/uploads/' . $this->avatar;
     }
 
     public function makeAdmin(){
@@ -110,7 +122,7 @@ class User extends Authenticatable
         $this->status = User::IS_ACTIVE;
         $this->save();
     }
-     
+
     public function toggleBan($value){
         if($value == null){
             return $this->unban();
