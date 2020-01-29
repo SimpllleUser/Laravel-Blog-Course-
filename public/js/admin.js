@@ -1415,7 +1415,8 @@ $(function() {
     $(".select2").select2();
     //Date picker
     $('#datepicker').datepicker({
-        autoclose: true
+        autoclose: true,
+        format: 'yy/mm/dd'
     });
     //iCheck for checkbox and radio inputs
     $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({

@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Support\Facades\Storage;
@@ -11,8 +11,8 @@ use Illuminate\Support\Str;
 class Post extends Model
 {
     use Sluggable;
-    protected $fillable = ['title','content','user_id'];
-    
+    protected $fillable = ['title','content','date'];
+
     public function category(){
         return $this->hasOne(Category::class);
     }
@@ -114,5 +114,9 @@ class Post extends Model
         }
 
         return '/uploads/' . $this->image;
+    }
+    public function setDateAttribute($value){
+       $date = Carbon::createFromFormat('d/m/y' , $value)->format('Y-m-d');
+       dd($date);
     }
 }
