@@ -14,11 +14,11 @@ class Post extends Model
     protected $fillable = ['title','content','date'];
 
     public function category(){
-        return $this->hasOne(Category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function author(){
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function tags(){
@@ -39,7 +39,7 @@ class Post extends Model
     }
      public static function add($fields){
          $post = new static;
-         $post->fillable($fields);
+         $post->fill ($fields);
          $post->user_id = 1;
          $post->save();
 
@@ -51,15 +51,20 @@ class Post extends Model
         $this->save();
      }
      public function remove(){
-         Storage::delete('uploads/' . $this->image);
+        $this->removeImage();
          $this->delete();
      }
-
+     public  function removeImage(){
+        if($this->image != null){
+            Storage::delete('uploads/' . $this->image);
+        }
+     }
      public  function uploadImage($image){
         //  str_random(10)
         if($image == null){return;}
-        Storage::delete('uploads/' . $this->image);
+        $this->removeImage();
         $filename = Str::random(10) . '.' . $image ->extension();
+        $image->storeAs('uploads', $filename);
         $this->image = $filename;
         $this->save();
      }
@@ -91,22 +96,22 @@ class Post extends Model
         return $this->setPublic();
     }
 
-    public function setFeature(){
-        $this->is_feature = 0;
+    public function setFeatured(){
+        $this->is_featured = 0;
         $this->save();
     }
 
     public function setStandart(){
-        $this->is_feature = 1;
+        $this->is_featured = 1;
         $this->save();
     }
 
-    public function toggleFeature($value){
+    public function toggleFeatured($value){
         if($value==null){
             return $this->setStandart();
         }
 
-        return $this->setFeature ();
+        return $this->setFeatured ();
     }
     public function getImage(){
         if($this->image == null){
@@ -115,8 +120,22 @@ class Post extends Model
 
         return '/uploads/' . $this->image;
     }
-    public function setDateAttribute($value){
-       $date = Carbon::createFromFormat('d/m/y' , $value)->format('Y-m-d');
-       dd($date);
+    public function getCategoryTitle(){
+        // if($this->category != null){
+        //     return $this->category->title;
+        // }
+        // return 'No category';
+        return ($this->category != null)
+                ? $this->category->title
+                : 'No category';
     }
+    public function getTagsTitle(){
+        return ($this->tags != null)
+        ? implode(', ', $this->tags->pluck('title')->all())
+        : 'No tags';
+    }
+    // public function setDateAttribute($value){
+    //     // $date = Carbon::createFromFormat('d/m/y' , $value)->format('Y-m-d');
+    //    dd($value);
+    // }
 }

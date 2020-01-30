@@ -56,9 +56,14 @@ class PostsController extends Controller
                 'image' => 'nullable|image',
             ]
         );
-       $post=Post::add($request->all());
+       $post = Post::add($request->all());
+       $post->uploadImage($request->file('image'));
+       $post->setCategory($request->get('category_id'));
+       $post->setTags($request->get('tags'));
+       $post->toggleFeatured($request->get('is_featured'));
+       $post->toggleStatus($request->get('status'));
 
-        dd($post ->title);
+        return redirect()->route('posts.index');
     }
 
     /**

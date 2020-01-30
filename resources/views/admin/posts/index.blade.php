@@ -48,8 +48,9 @@
                         <tr>
                             <td>{{$post->id}}</td>
                             <td>{{$post->title}}</td>
-                            <td>Обучение</td>
-                            <td>Laravel, PHP</td>
+                            <!-- <td>{{$post->category->title}}</td> -->
+                            <td>{{$post->getCategoryTitle()}}</td>
+                            <td>{{$post->getTagsTitle()}}</td>
                             <td>
                                 <img src="{{$post->getImage()}}" alt="" width="100">
                             </td>
