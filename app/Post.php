@@ -11,7 +11,7 @@ use Illuminate\Support\Str;
 class Post extends Model
 {
     use Sluggable;
-    protected $fillable = ['title','content','date'];
+    protected $fillable = ['title','content','date','description'];
 
     public function category(){
         return $this->belongsTo(Category::class);
@@ -137,6 +137,12 @@ class Post extends Model
         }else{
             return 'No tags';
         }
+    }
+    public function getcategoryID(){
+        return ($this->category !=null) ? $this->category->id: null;
+    }
+    public function getDate(){
+        return $this->date;
     }
     // public function setDateAttribute($value){
     //     // $date = Carbon::createFromFormat('d/m/y' , $value)->format('Y-m-d');

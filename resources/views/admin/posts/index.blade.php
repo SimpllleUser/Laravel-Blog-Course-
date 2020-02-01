@@ -48,7 +48,6 @@
                         <tr>
                             <td>{{$post->id}}</td>
                             <td>{{$post->title}}</td>
-                            <!-- <td>{{$post->category->title}}</td> -->
                             <td>{{$post->getCategoryTitle()}}</td>
                             <td>{{$post->getTagsTitle()}}</td>
                             <td>
