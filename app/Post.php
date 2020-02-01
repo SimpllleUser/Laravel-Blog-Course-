@@ -125,14 +125,18 @@ class Post extends Model
         //     return $this->category->title;
         // }
         // return 'No category';
-        return ($this->category != null)
-                ? $this->category->title
-                : 'No category';
+        if($this->category != null){
+            return $this->category->title;
+        }else{
+            return 'No category';
+        }
     }
     public function getTagsTitle(){
-        return ($this->tags != null)
-        ? implode(', ', $this->tags->pluck('title')->all())
-        : 'No tags';
+        if($this->tags != null){
+            return implode(', ', $this->tags->pluck('title')->all());
+        }else{
+            return 'No tags';
+        }
     }
     // public function setDateAttribute($value){
     //     // $date = Carbon::createFromFormat('d/m/y' , $value)->format('Y-m-d');

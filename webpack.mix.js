@@ -29,7 +29,7 @@ mix.styles(
     ], 'public/css/admin.css');
 
 mix.scripts([
-    'resources/assets/admin/plugins/jQuery/jquery-2.2.3.min.js',
+    'resources/assets/plugins/jQuery/jquery-2.2.3.min.js',
     'resources/assets/admin/bootstrap/js/bootstrap.min.js',
 
     'resources/assets/admin/plugins/select2/select2.full.min.js', //

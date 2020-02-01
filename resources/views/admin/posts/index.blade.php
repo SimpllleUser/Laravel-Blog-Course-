@@ -17,10 +17,10 @@
 
     <!-- Main content -->
     <section class="content">
-        {{Form::open([
+        <!-- {{Form::open([
             'route' => 'posts.store',
             'files' =>true
-            ])}}
+            ])}} -->
         <!-- Default box -->
         <div class="box">
             <div class="box-header">
@@ -54,11 +54,16 @@
                             <td>
                                 <img src="{{$post->getImage()}}" alt="" width="100">
                             </td>
-                            {{Form::open(['route'=>['posts.destroy', $post->id], 'method'=>'delete'])}}
+                            <td>
+                                <a href="{{route('posts.edit', $post->id)}}" class="fa fa-pencil">Edit</a>
+                                {{Form::open(['route'=>['posts.destroy', $post->id], 'method'=>'delete'])}}
                             <button onclick="return confirm('are you sure?')" type="submit" class="delete">
                                 X
                             </button>
                             {{Form::close()}}
+
+                        </td>
+
                         </tr>
                         @endforeach
                         </tfoot>

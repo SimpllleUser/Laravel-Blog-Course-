@@ -85,7 +85,18 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        return view('admin.posts.edit');
+        $post = Post::find($id);
+        $categories = Category::pluck('title', 'id')->all();
+        $tags = Tag::pluck('title', 'id')->all();
+        return view(
+            'admin.posts.edit',
+            compact(
+                'categories',
+                'tags',
+                'post'
+            )
+        );
+
     }
 
     /**
@@ -97,7 +108,24 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate(
+            $request,
+            [
+                'title' => 'required',
+                'content' => 'required',
+                'date' => 'required',
+                'image' => 'nullable|image',
+            ]
+        );
+       $post = Post::find($id);
+       $post->edit($request->all());
+       $post->uploadImage($request->file('image'));
+       $post->setCategory($request->get('category_id'));
+       $post->setTags($request->get('tags'));
+       $post->toggleFeatured($request->get('is_featured'));
+       $post->toggleStatus($request->get('status'));
+
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -108,7 +136,7 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        Post::find($id)->delete();
-        return redirect()->route('pots.index');
+        Post::find($id)->remove();
+        return redirect()->route('posts.index');
     }
 }

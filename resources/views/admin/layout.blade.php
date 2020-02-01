@@ -439,6 +439,18 @@ button.delete-task{
     </div>
     <!-- ./wrapper -->
     <script src="/js/admin.js"></script>
+    <script src="/plugins/ckeditor/ckeditor.js"></script>
+    <script src="/plugins/ckfinder/ckfinder.js"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <script>
+    $(document).ready(function(){
+        var editor = CKEDITOR.replaceAll();
+        CKFinder.setupCKEditor( editor );
+    })
+    </script>
 </body>
 
 <!-- Mirrored from almsaeedstudio.com/themes/AdminLTE/pages/examples/blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 18 Dec 2016 15:13:35 GMT -->
