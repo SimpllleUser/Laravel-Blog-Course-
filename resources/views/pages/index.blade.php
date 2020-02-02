@@ -14,11 +14,12 @@
                                 <div class="text-uppercase text-center">View Post</div>
                             </a>
                         </div>
+                        <h1>Минута 8</h1>
                         <div class="post-content">
                             <header class="entry-header text-center text-uppercase">
-                                <h6><a href=""> {{$post->getcategoryID()}}</a></h6>
+                                <h6><a href="{{route('category.show', $post->category->slug)}}"> {{$post->getcategoryID()}}</a></h6>
 
-                                <h1 class="entry-title"><a href="{{route('post.show', $post->slug)}}">{{$post->title}}</a></h1>
+                                <h1 class="entry-title"><a href="{{route('post.show', $post->slug)}}">{{$post->getCategoryTitle()}}</a></h1>
 
 
                             </header>
