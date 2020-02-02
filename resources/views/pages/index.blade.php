@@ -8,9 +8,9 @@
                     @foreach($posts as $post)
                     <article class="post">
                         <div class="post-thumb">
-                            <a href="blog.html"><img src="{{$post->getImage()}}" alt=""></a>
+                            <a href="{{route('post.show', $post->slug)}}"><img src="{{$post->getImage()}}" alt=""></a>
 
-                            <a href="blog.html" class="post-thumb-overlay text-center">
+                            <a href="{{route('post.show', $post->slug)}}" class="post-thumb-overlay text-center">
                                 <div class="text-uppercase text-center">View Post</div>
                             </a>
                         </div>
@@ -18,7 +18,7 @@
                             <header class="entry-header text-center text-uppercase">
                                 <h6><a href=""> {{$post->getcategoryID()}}</a></h6>
 
-                                <h1 class="entry-title"><a href="blog.html">{{$post->title}}</a></h1>
+                                <h1 class="entry-title"><a href="{{route('post.show', $post->slug)}}">{{$post->title}}</a></h1>
 
 
                             </header>
@@ -26,7 +26,7 @@
                                 <p>{{$post->description}}                                </p>
 
                                 <div class="btn-continue-reading text-center text-uppercase">
-                                    <a href="blog.html" class="more-link">Continue Reading</a>
+                                    <a href="{{route('post.show', $post->slug)}}" class="more-link">Continue Reading</a>
                                 </div>
                             </div>
                             <div class="social-share">
@@ -44,9 +44,9 @@
                     @endforeach
                     <!-- <article class="post">
                         <div class="post-thumb">
-                            <a href="blog.html"><img src="images/abc.jpg" alt=""></a>
+                            <a href="{{route('post.show', $post->slug)}}"><img src="images/abc.jpg" alt=""></a>
 
-                            <a href="blog.html" class="post-thumb-overlay text-center">
+                            <a href="{{route('post.show', $post->slug)}}" class="post-thumb-overlay text-center">
                                 <div class="text-uppercase text-center">View Post</div>
                             </a>
                         </div>
@@ -54,7 +54,7 @@
                             <header class="entry-header text-center text-uppercase">
                                 <h6><a href="#">craft</a></h6>
 
-                                <h1 class="entry-title"><a href="blog.html">wooden table is beautiful</a></h1>
+                                <h1 class="entry-title"><a href="{{route('post.show', $post->slug)}}">wooden table is beautiful</a></h1>
 
 
                             </header>
@@ -64,7 +64,7 @@
                                 </p>
 
                                 <div class="btn-continue-reading text-center text-uppercase">
-                                    <a href="blog.html" class="more-link">Continue Reading</a>
+                                    <a href="{{route('post.show', $post->slug)}}" class="more-link">Continue Reading</a>
                                 </div>
                             </div>
                             <div class="social-share">
@@ -81,9 +81,9 @@
                     </article>
                     <article class="post">
                         <div class="post-thumb">
-                            <a href="blog.html"><img src="images/blog-2.jpg" alt=""></a>
+                            <a href="{{route('post.show', $post->slug)}}"><img src="images/blog-2.jpg" alt=""></a>
 
-                            <a href="blog.html" class="post-thumb-overlay text-center">
+                            <a href="{{route('post.show', $post->slug)}}" class="post-thumb-overlay text-center">
                                 <div class="text-uppercase text-center">View Post</div>
                             </a>
                         </div>
@@ -91,7 +91,7 @@
                             <header class="entry-header text-center text-uppercase">
                                 <h6><a href="#"> Lifestyle</a></h6>
 
-                                <h1 class="entry-title"><a href="blog.html">Small work station</a></h1>
+                                <h1 class="entry-title"><a href="{{route('post.show', $post->slug)}}">Small work station</a></h1>
 
 
                             </header>
@@ -101,7 +101,7 @@
                                 </p>
 
                                 <div class="btn-continue-reading text-center text-uppercase">
-                                    <a href="blog.html" class="more-link">Continue Reading</a>
+                                    <a href="{{route('post.show', $post->slug)}}" class="more-link">Continue Reading</a>
                                 </div>
                             </div>
                             <div class="social-share">
@@ -118,9 +118,9 @@
                     </article>
                     <article class="post">
                         <div class="post-thumb">
-                            <a href="blog.html"><img src="images/blog-3.jpg" alt=""></a>
+                            <a href="{{route('post.show', $post->slug)}}"><img src="images/blog-3.jpg" alt=""></a>
 
-                            <a href="blog.html" class="post-thumb-overlay text-center">
+                            <a href="{{route('post.show', $post->slug)}}" class="post-thumb-overlay text-center">
                                 <div class="text-uppercase text-center">View Post</div>
                             </a>
                         </div>
@@ -128,7 +128,7 @@
                             <header class="entry-header text-center text-uppercase">
                                 <h6><a href="#"> Mission</a></h6>
 
-                                <h1 class="entry-title"><a href="blog.html">Waiting to launch on the sky</a></h1>
+                                <h1 class="entry-title"><a href="{{route('post.show', $post->slug)}}">Waiting to launch on the sky</a></h1>
 
 
                             </header>
@@ -138,7 +138,7 @@
                                 </p>
 
                                 <div class="btn-continue-reading text-center text-uppercase">
-                                    <a href="blog.html" class="more-link">Continue Reading</a>
+                                    <a href="{{route('post.show', $post->slug)}}" class="more-link">Continue Reading</a>
                                 </div>
                             </div>
                             <div class="social-share">
@@ -156,9 +156,9 @@
 
                     <article class="post">
                         <div class="post-thumb">
-                            <a href="blog.html"><img src="images/blog-4.jpg" alt=""></a>
+                            <a href="{{route('post.show', $post->slug)}}"><img src="images/blog-4.jpg" alt=""></a>
 
-                            <a href="blog.html" class="post-thumb-overlay text-center">
+                            <a href="{{route('post.show', $post->slug)}}" class="post-thumb-overlay text-center">
                                 <div class="text-uppercase text-center">View Post</div>
                             </a>
                         </div>
@@ -166,7 +166,7 @@
                             <header class="entry-header text-center text-uppercase">
                                 <h6><a href="#"> Cloth</a></h6>
 
-                                <h1 class="entry-title"><a href="blog.html">A day labour wore jeans</a></h1>
+                                <h1 class="entry-title"><a href="{{route('post.show', $post->slug)}}">A day labour wore jeans</a></h1>
 
 
                             </header>
@@ -176,7 +176,7 @@
                                 </p>
 
                                 <div class="btn-continue-reading text-center text-uppercase">
-                                    <a href="blog.html" class="more-link">Continue Reading</a>
+                                    <a href="{{route('post.show', $post->slug)}}" class="more-link">Continue Reading</a>
                                 </div>
                             </div>
                             <div class="social-share">
