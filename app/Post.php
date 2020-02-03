@@ -170,6 +170,9 @@ class Post extends Model
     {
         return self::all()->except($this->id);
     }
+    public function hasCategory(){
+        return $this->category != null ? true : false;
+    }
     // public function setDateAttribute($value){
     //     // $date = Carbon::createFromFormat('d/m/y' , $value)->format('Y-m-d');
     //    dd($value);

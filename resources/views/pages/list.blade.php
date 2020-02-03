@@ -20,7 +20,7 @@
                                 <header class="entry-header text-center text-uppercase">
                                     <h6><a href="{{route('post.show', $post->slug)}}"> {{$post->getCategoryTitle()}}</a></h6>
 
-                                    <h1 class="entry-title"><a href="{{route('post.show', $post->slug)}}">{{$post->title}}</a></h1>
+                                    <h1 class="entry-title"><a href="{{route('post.show', $post->slug)}}">{{$post->getTagsTitle()}}</a></h1>
 
 
                                 </header>
