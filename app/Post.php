@@ -171,8 +171,14 @@ class Post extends Model
     public function hasCategory(){
         return $this->category != null ? true : false;
     }
-    // public function setDateAttribute($value){
-    //     // $date = Carbon::createFromFormat('d/m/y' , $value)->format('Y-m-d');
-    //    dd($value);
-    // }
+
+    public static function getPopularPosts(){
+        return self::orderBy('views', 'desc')->take(3)->get();
+    }
+    public static function getFeaturedPosts(){
+        return self::where('is_featured', 1)->take(3)->get();
+    }
+    public static function getRecentPosts(){
+        return self::orderBy('date', 'desc')->take(4)->get();
+    }
 }
