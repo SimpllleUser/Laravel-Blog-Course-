@@ -420,11 +420,11 @@ button.delete-task{
     <script src="/js/admin.js"></script>
     <script src="/plugins/ckeditor/ckeditor.js"></script>
     <script src="/plugins/ckfinder/ckfinder.js"></script>
-    <!-- <script
+    <script
   src="https://code.jquery.com/jquery-3.4.1.min.js"
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
-    <script> -->
+    <script>
     $(document).ready(function(){
         var editor = CKEDITOR.replaceAll();
         CKFinder.setupCKEditor( editor );

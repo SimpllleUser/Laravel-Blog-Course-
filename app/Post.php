@@ -132,11 +132,9 @@ class Post extends Model
         }
     }
     public function getTagsTitle(){
-        if($this->tags != null){
-            return implode(', ', $this->tags->pluck('title')->all());
-        }else{
-            return 'No tags';
-        }
+        return (!$this->tags->isEmpty())
+            ?   implode(', ', $this->tags->pluck('title')->all())
+            : 'Нет тегов';
     }
     public function getcategoryID(){
         return ($this->category !=null) ? $this->category->id: null;

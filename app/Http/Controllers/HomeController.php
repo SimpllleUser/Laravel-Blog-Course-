@@ -12,7 +12,10 @@ class HomeController extends Controller
     public function index()
     {
         $posts = Post::paginate(2);
-        return view('pages.index', ['posts' => $posts]);
+
+        return view('pages.index', [
+            'posts' =>  $posts
+        ]);
     }
     public function show($slug)
     {
@@ -26,7 +29,7 @@ class HomeController extends Controller
 
         $tag = Tag::where('slug', $slug)->firstOrFail();
         $posts = $tag->posts()->paginate(2);
-
+        // $posts = $tag->posts;
         return view('pages.list', ['posts' => $posts]);
     }
 
