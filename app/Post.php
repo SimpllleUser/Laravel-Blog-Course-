@@ -164,6 +164,16 @@ class Post extends Model
         return self::find($postID);
     }
 
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function getComments()
+    {
+        return $this->comments()->where('status', 1)->get();
+    }
+
     public function related()
     {
         return self::all()->except($this->id);

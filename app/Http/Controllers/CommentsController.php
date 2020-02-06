@@ -22,4 +22,6 @@ class CommentsController extends Controller
 
     	return redirect()->back()->with('status', 'Ваш комментарий будет скоро добавлен!');
     }
+
+
 }

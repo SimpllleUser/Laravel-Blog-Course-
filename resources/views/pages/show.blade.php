@@ -52,9 +52,6 @@
                 <div class="top-comment"><!--top comment-->
                     <img src="/images/comment.jpg" class="pull-left img-circle" alt="">
                     <h4>Rubel Miah</h4>
-
-                    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy hello ro mod tempor
-                        invidunt ut labore et dolore magna aliquyam erat.</p>
                 </div><!--top comment end-->
                 <div class="row"><!--blog next previous-->
                     <div class="col-md-6">
@@ -107,30 +104,32 @@
                         </div>
                     @endforeach
                     </div>
-                </div><!--related post carousel-->
-                <div class="bottom-comment"><!--bottom comment-->
-                    <h4>3 comments</h4>
-
-                    <div class="comment-img">
-                        <img class="img-circle" src="/images/comment-img.jpg" alt="">
+                </div>
+                @if(!$post->comments->isEmpty())
+                @foreach($post->getComments() as $comment)
+                <div class="bottom-comment">
+                <div class="comment-img">
+                        <img class="img-circle" src="{{$comment->author->getImage()}}" alt="AVATAR" width="75px" height="75px" >
                     </div>
 
                     <div class="comment-text">
                         <a href="#" class="replay btn pull-right"> Replay</a>
-                        <h5>Rubel Miah</h5>
+                        <h5>{{$comment->author->name}}</h5>
 
                         <p class="comment-date">
-                            December, 02, 2015 at 5:57 PM
+                            {{$comment->created_at->diffForHumans()}}
                         </p>
 
 
-                        <p class="para">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-                            diam nonumy
-                            eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
-                            voluptua. At vero eos et cusam et justo duo dolores et ea rebum.</p>
+                        <p class="para"> {{$comment->text}} </p>
                     </div>
                 </div>
+                @endforeach
+                @endif
+
+                </div>
                 <!-- end bottom comment-->
+            @include('pages._sidebar')
 
 
                 <div class="leave-comment"><!--leave comment-->
@@ -149,8 +148,9 @@
                             <button class="btn send-btn">Post Comment</button>
                         </form>
                 </div><!--end leave comment-->
+
             </div>
-            @include('pages._sidebar')
+
         </div>
     </div>
 </div>
