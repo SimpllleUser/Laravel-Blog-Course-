@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="main-content">
+<!-- <h1>{{$post->id}}</h1> -->
     <div class="container">
         <div class="row">
             <div class="col-md-8">
@@ -24,6 +25,7 @@
 
 
                         </header>
+
                         <div class="entry-content">
                             {{!! $post->content !!}}
                         </div>
@@ -137,15 +139,15 @@
 
                     <form class="form-horizontal contact-form" role="form" method="post" action="/comment">
                         {{csrf_field()}}
-                        <input type="hidden" value="{{$post->id}}">
-                        <div class="form-group">
-                            <div class="col-md-12">
-										<textarea class="form-control" rows="6" name="message"
-                                                  placeholder="Write Massage"></textarea>
+                        <input type="hidden" name="post_id" value="{{$post->id}}">
+                            <div class="form-group">
+                                <div class="col-md-12">
+    										<textarea class="form-control" rows="6" name="message"
+                                                      placeholder="Write Massage"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <button class="btn send-btn">Post Comment</button>
-                    </form>
+                            <button class="btn send-btn">Post Comment</button>
+                        </form>
                 </div><!--end leave comment-->
             </div>
             @include('pages._sidebar')
