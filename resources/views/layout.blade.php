@@ -266,6 +266,7 @@
 <script type="text/javascript" src="assets/js/jquery.stickit.min.js"></script>
 <script type="text/javascript" src="assets/js/menu.js"></script>
 <script type="text/javascript" src="assets/js/scripts.js"></script> -->
+<script src="/js/app.js"></script>
 <script src="/js/front.js"></script>
 </body>
 </html>

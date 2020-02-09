@@ -1,9 +1,13 @@
 @extends('layout')
 
 @section('content')
+<div id="app">
+
 <div class="main-content">
     <div class="container">
         <div class="row">
+        <example-component></example-component>
+
             <div class="col-md-8">
                 @foreach($posts as $post)
                 <article class="post">
@@ -50,4 +54,7 @@
         </div>
     </div>
 </div>
+
+</div>
 @endsection
+
