@@ -6,5 +6,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class TypeTask extends Model
 {
-    //
+    use Sluggable;
+
+    protected $fillable = ['title'];
+
+    public function tasks(){
+        return $this->hasMany(Task::class);
+    }
+
+    public function sluggable(){
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 }
