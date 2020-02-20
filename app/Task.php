@@ -14,7 +14,7 @@ class Task extends Model
     protected $fillable = ['title'];
 
     public function status_tasks(){
-        return $this->belongsTo(StatusTask::class);
+        return $this->belongsTo(StatusTask::class,'status_id');
     }
 
     public function type_tasks(){
@@ -23,7 +23,7 @@ class Task extends Model
 
 
     public function some_users(){
-        return $this->belongsTo(SomeUser::class);
+        return $this->belongsTo(SomeUser::class,'user_id');
         // Возможно надо будет корректировать отшонений полей таблицы
 
     }
@@ -62,10 +62,19 @@ class Task extends Model
     //     return 'Some text'
     // }
 
-    public function testGetSomeInfo()
+    public function getType()
     {
-        // $id = $this->type_id;
-        return $this->type_tasks;
+        return $this->type_tasks->title;
+    }
+
+    public function getStatus()
+    {
+        return $this->status_tasks->title;
+    }
+
+    public function getSomeUser()
+    {
+        return $this->some_users->user_name;
     }
 
     public function sluggable()
