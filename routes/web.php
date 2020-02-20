@@ -18,3 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/status', 'StatusController@index');
+Route::get('/tasks', 'TasksController@index');
+

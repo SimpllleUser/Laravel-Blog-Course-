@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 class StatusTask extends Model
 {
-    // use Sluggable;
+    use Sluggable;
 
     protected $fillable = ['title'];
 

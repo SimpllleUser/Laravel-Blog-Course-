@@ -18,8 +18,9 @@ class Task extends Model
     }
 
     public function type_tasks(){
-        return $this->belongsTo(TypeTask::class);
+        return $this->belongsTo(TypeTask::class,'type_id');
     }
+
 
     public function some_users(){
         return $this->belongsTo(SomeUser::class);
@@ -29,7 +30,7 @@ class Task extends Model
 
     public static function add($fields){
         $task = new static;
-        $task->fil($fields);
+        $task->fill($fields);
         $task->user_id = 1;
         $task->save();
 
@@ -54,6 +55,17 @@ class Task extends Model
 
     public function getDate(){
         return $this->date;
+    }
+
+    // public function text()
+    // {
+    //     return 'Some text'
+    // }
+
+    public function testGetSomeInfo()
+    {
+        // $id = $this->type_id;
+        return $this->type_tasks;
     }
 
     public function sluggable()
