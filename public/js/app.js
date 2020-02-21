@@ -1932,12 +1932,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['types', 'statuses'],
   data: function data() {
     return {
-      text: 'task',
+      title: '',
       status_task: [],
       type_task: []
     };
@@ -1946,7 +1948,21 @@ __webpack_require__.r(__webpack_exports__);
     some_text: function some_text() {
       return "Hello!";
     },
-    send_data: function send_data() {}
+    send_data: function send_data() {
+      console.log(':Sadas');
+      var data = {
+        title: this.title,
+        slug: this.title,
+        user_id: '1',
+        type_id: this.type_task,
+        statu_id: this.status_task
+      };
+      axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('http://127.0.0.1:8000/create_task/', data).then(function (response) {
+        console.log(response);
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -37356,9 +37372,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("h1", [
-      _vm._v("Create " + _vm._s(_vm.text) + " : " + _vm._s(_vm.some_text()))
-    ]),
+    _c("h1", [_vm._v("Create  : " + _vm._s(_vm.some_text()))]),
+    _vm._v(" "),
+    _c("input", { attrs: { type: "text" } }),
     _vm._v(" "),
     _c(
       "select",
@@ -37438,28 +37454,52 @@ var render = function() {
       0
     ),
     _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _c("h1", [_vm._v("Status - " + _vm._s(_vm.status_task.id))]),
-    _vm._v(" "),
-    _c("h1", [_vm._v("Type - " + _vm._s(_vm.type_task.id))])
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
+    _c("div", { staticClass: "form-group" }, [
       _c("label", { attrs: { for: "title-task" } }, [_vm._v("Title-task")]),
       _vm._v(" "),
       _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.title,
+            expression: "title"
+          }
+        ],
         staticClass: "form-control",
-        attrs: { type: "text", id: "title-task" }
+        attrs: { type: "text", id: "title-task" },
+        domProps: { value: _vm.title },
+        on: {
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.title = $event.target.value
+          }
+        }
       })
-    ])
-  }
-]
+    ]),
+    _vm._v(" "),
+    _c("h1", [_vm._v(_vm._s(_vm.title))]),
+    _vm._v(" "),
+    _c("h1", [_vm._v("Status - " + _vm._s(_vm.status_task.id))]),
+    _vm._v(" "),
+    _c("h1", [_vm._v("Type - " + _vm._s(_vm.type_task.id))]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        on: {
+          click: function($event) {
+            return _vm.send_data()
+          }
+        }
+      },
+      [_vm._v("Send")]
+    )
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
