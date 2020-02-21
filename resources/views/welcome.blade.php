@@ -88,7 +88,6 @@
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="/status">STATUS</a>
                     <a href="tasks">TASKS</a>
-                    <a href="https://blog.laravel.com">Blog</a>
                     <a href="https://nova.laravel.com">Nova</a>
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\StatusTask;
+use App\TypeTask;
+
 use Illuminate\Http\Request;
 use App\Task;
 
@@ -25,7 +28,10 @@ class TasksController extends Controller
      */
     public function create()
     {
-        //
+        $all_status = StatusTask::pluck('title','id')->all();
+        $all_type = TypeTask::pluck('title','id')->all();
+
+        return view('create_task', compact('all_status','all_type'));
     }
 
     /**

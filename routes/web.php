@@ -19,4 +19,4 @@ Route::get('/', function () {
 });
 Route::get('/status', 'StatusController@index');
 Route::get('/tasks', 'TasksController@index');
-
+Route::get('/create_task','TasksController@create');
