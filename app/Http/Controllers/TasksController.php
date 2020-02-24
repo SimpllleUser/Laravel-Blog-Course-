@@ -18,7 +18,7 @@ class TasksController extends Controller
     public function index()
     {
         $allTasks = Task::all();
-        return view('tasks', ['allTasks' =>$allTasks]);
+        return view('task.index', ['allTasks' =>$allTasks]);
     }
 
     /**
@@ -28,10 +28,10 @@ class TasksController extends Controller
      */
     public function create()
     {
-        $all_status = StatusTask::pluck('title','id')->all();
-        $all_type = TypeTask::pluck('title','id')->all();
+        $statuses = StatusTask::pluck('title','id')->all();
+        $types = TypeTask::pluck('title','id')->all();
 
-        return view('create_task', compact('all_status','all_type'));
+        return view('task.create', compact('statuses','types'));
     }
 
     /**
@@ -42,7 +42,9 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $task = Task::add($request->all());
+        $task->setStatusTask($request->get('status_id'));
+        $task->setTypeTask($request->get('type_id'));
     }
 
     /**

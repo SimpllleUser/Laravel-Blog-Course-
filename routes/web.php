@@ -18,6 +18,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/status', 'StatusController@index');
-Route::get('/tasks', 'TasksController@index');
-Route::get('/create_task','TasksController@create');
-Route::post('/create_task','TasksController@store');
+Route::resource('task', 'TasksController');

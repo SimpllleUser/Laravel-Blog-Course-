@@ -18,12 +18,12 @@ class Task extends Model
     }
 
     public function type_tasks(){
-        return $this->belongsTo(TypeTask::class,'type_id');
+        return $this->belongsTo(TypeTask::class);
     }
 
 
     public function some_users(){
-        return $this->belongsTo(SomeUser::class,'user_id');
+        return $this->belongsTo(SomeUser::class);
         // Возможно надо будет корректировать отшонений полей таблицы
 
     }
@@ -43,14 +43,14 @@ class Task extends Model
     }
 
     public function setTypeTask($id){
-        if($id == null){return;}
         $this->type_id = $id;
+        $this->save();
     }
 
 
     public function setStatusTask($id){
-        if($id == null){return;}
         $this->status_id = $id;
+        $this->save();
     }
 
     public function getDate(){
