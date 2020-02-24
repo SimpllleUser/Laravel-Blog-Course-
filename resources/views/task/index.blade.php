@@ -4,18 +4,16 @@
 
     <h1>Hello you on page with all status for tasks</h1>
     <div class="col-6">
-        {{-- {{ dd($allTasks[1]->getSomeUser()) }} --}}
-        {{-- <hr> @foreach($allTasks as $task)
+        <hr> @foreach($allTasks as $task)
         <div class="card">
-            <h3 class="text-primary">Name user {{ $task->getSomeUser() }}</h3>
-            <h1> ID :{{ $task->id }} <br> name : {{ $task->title}}</h1>
-            <h3> type : {{ $task->getType() }}</h3>
-            <h3> status : {{ $task->getStatus() }}</h3>
+           {{-- <h3> {{ $task->getStatus() }} </h3> --}}
+           {{ $task->getSomeUser() }}
+
         </div>
-        @endforeach --}}
+        @endforeach
     </div>
 
-<a href="{{ route('task.create') }}">Create</a>
+<a href="{{ route('task.create') }}">create_task</a>
 
 </div>
-@endsection {{-- [0]->getTitleStatusTask() --}}
+@endsection

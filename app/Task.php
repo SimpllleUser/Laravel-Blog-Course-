@@ -18,12 +18,12 @@ class Task extends Model
     }
 
     public function type_tasks(){
-        return $this->belongsTo(TypeTask::class);
+        return $this->belongsTo(TypeTask::class,'type_id');
     }
 
 
     public function some_users(){
-        return $this->belongsTo(SomeUser::class);
+        return $this->belongsTo(SomeUser::class,'user_id');
         // Возможно надо будет корректировать отшонений полей таблицы
 
     }
@@ -65,16 +65,20 @@ class Task extends Model
     public function getType()
     {
         return $this->type_tasks->title;
+        // Получить установаленный тип task
     }
 
     public function getStatus()
     {
         return $this->status_tasks->title;
+        // Получить установаленный статус task
     }
 
     public function getSomeUser()
     {
         return $this->some_users->user_name;
+        // Получить данные пользователя , который выполнил задание
+        // В данном примере имя , можно менять на другие имена полей из таблицы some_user
     }
 
     public function sluggable()

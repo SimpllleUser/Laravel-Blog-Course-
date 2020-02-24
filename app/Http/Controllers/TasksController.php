@@ -45,6 +45,7 @@ class TasksController extends Controller
         $task = Task::add($request->all());
         $task->setStatusTask($request->get('status_id'));
         $task->setTypeTask($request->get('type_id'));
+        return redirect()->route('task.index');
     }
 
     /**
